@@ -9,7 +9,7 @@ const server = new McpServer({
 })
 
 server.tool(
-    "MCP - greet",
+    "MCP-Greet",
     "say hello",
     {
         name:z.string() 
@@ -17,10 +17,16 @@ server.tool(
     async ({name}) => ({
         content:[{
             type:"text",
-            text:`Hello ${name}`
+            text:`Hello ${name} vamos a aprender a usar MCP`
         }]
     })
 );
 
 const transport = new StdioServerTransport();
-await server.connect(transport);
+
+async function main() {
+    await server.connect(transport);
+}
+
+main().catch(console.error);
+ 
