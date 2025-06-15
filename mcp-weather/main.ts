@@ -2,25 +2,25 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from 'zod';
 
-
 const server = new McpServer({
-    name: 'Greeting-MCP',
-    version: '1.0.0'
+    name: "Weather-MCP",
+    version: "1.0.0"
 })
 
+
 server.tool(
-    "MCP-Greet",
-    "say hello",
+    "MCP-Weather",
+    "Get the weather for a given city",
     {
-        name:z.string() 
+        city: z.string()
     },
-    async ({name}) => ({
+    async ({city}) => ({
         content:[{
             type:"text",
-            text:`Hello ${name} vamos a aprender a usar MCP`
+            text: `The weather in ${city} is sunny`
         }]
     })
-);
+)
 
 const transport = new StdioServerTransport();
 
@@ -28,5 +28,6 @@ async function main() {
     await server.connect(transport);
 }
 
-main().catch(console.error);
- 
+main();
+
+

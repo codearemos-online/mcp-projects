@@ -1,0 +1,4 @@
+Pckages to install 
+
+npm install @modelcontextprotocol/sdk
+npm i zod
